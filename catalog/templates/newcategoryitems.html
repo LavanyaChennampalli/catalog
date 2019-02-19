@@ -1,0 +1,38 @@
+{% include 'nav.html' %}
+{% block content %}
+<div class="container">
+<div class="">
+    <div class="mr-sm-2 mb-2 col-sm-4" style="margin-left:200px;">
+<div class="panel panel-success">
+<div class="panel-heading"><h3 style="color:black">New Movie Item</h3></div>
+<form action="#"
+  method="POST">
+  <div class="panel-body">
+  <p>Name:</p>
+  <input type="text" size="30" name="name" required>
+  <p>likes:</p>
+  <input type="text" size="30" name="likes" required>
+  <p>dislikes:</p>
+  <input type="text" size="30" name="dislikes" required>
+  <p>Views:</p>
+  <input type="text" size="30" name="views" required>
+
+  <p>img_url</p>
+  <input type="text" size="30" name="img_url" required>
+
+  <!-- <p>Film genres:</p>
+  <select>
+    <option value=2 >Adventure Films</option>
+    <option value=3 >Comedy Films</option>
+    <option value=7 >Horror Films</option>
+    <option value=8 >Musicals (Dance) Films</option>
+  </select>
+  </br></br> -->
+  </div>
+  <div class="panel-footer">
+ <input type=submit class="btn btn-warning" value="Create" >
+  <a href = "{{url_for('showcategoryitems',categories_id=categories_id)}}"><button type="button" class="btn btn-danger">Cancel</button></a>
+  </br></br>
+  </div>
+</form>
+{% endblock content %}

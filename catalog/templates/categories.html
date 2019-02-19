@@ -1,0 +1,22 @@
+{% include 'nav.html' %}
+{% block content %}
+<div class="main">
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+          <div class="alert alert-success alert-dismissable animated fadeIn">
+              {% for message in messages %}
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+              <p class="h4"><strong>{{ message }}</strong></p>
+              {% endfor %}
+          </div>
+  {% endif %}     
+{% endwith %}
+{% if username in session %}
+  {% for category in categories %}
+<a href = "{{url_for('showcategoryitems', categories_id = category.id)}}"> </a>
+<a href = "{{url_for('editCategory',category_id = category.id)}}"></a>
+<a href = "{{url_for('deleteCategory',category_id = category.id)}}"></a> 
+  {% endfor %}
+{% endif %}
+</div>
+{% endblock content %}}

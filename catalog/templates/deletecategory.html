@@ -1,0 +1,13 @@
+{% include 'nav.html' %}
+<div class="main">
+{% block content %}
+ <div class="">
+   <h1> Are you sure you want to delete {{category.name}}? </h1>
+   <form action="#" method = 'post'>
+     <input type='submit', value = 'Delete'>
+   </form>
+   <br>
+   <button type="button" class="btn btn-warning"><a href = "{{url_for('showCategories')}}"> Cancel </a>
+ </div>
+</div>
+{% endblock content %}

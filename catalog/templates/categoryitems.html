@@ -1,0 +1,47 @@
+{% include "nav.html" %}
+{% block content %}
+<div class="main">
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+          <div class="alert alert-success alert-dismissable animated fadeIn">
+              {% for message in messages %}
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+              <p class="h4"><strong>{{ message }}</strong></p>
+              {% endfor %}
+          </div>
+  {% endif %}  
+  {% endwith %}   
+<h1 style="font-size:250%; margin-top:30px, margin-left:300px; color:green;">{{categories.name}}</h1>
+{% if 'username' in session %}
+  <p style="text-align:right; margin-top:10px;"><a href = "{{url_for('newcategoryItem', categories_id = categories.id )}}" > <button type="button" class="btn btn-primary">Create New movie Item</button></a></p>
+{% endif %}
+
+<div class="row">
+{% for i in categoryitems %}
+
+  <div class="col-sm-4 "> 
+   <div class="card" style="width:200px">
+     {% if i.categories_id == categories.id %}
+     <div class="gallery">
+       <a target="_blank" href="{{i.img_url}}">
+       <img src={{ i.img_url }} style="width:100%">
+       </a>
+     </div>
+     <p style="font-size:100%"><h style="color:blue">Name:</h>{{i.name}}</p>
+     <p> <span class="glyphicon glyphicon-thumbs-up" style="color:darkgray"></span>{{i.likes}}
+     <span class="glyphicon glyphicon-thumbs-down" style="color:darkgray"></span>{{ i.dislikes}}</p>
+     <p style="font-size:100%"><h style="color:blue">Views:</h>{{i.views}}</p>
+
+      {% if 'username' in session %}
+          <button type="button" class="btn btn-success"><a href="{{ url_for('editcategoryItem', categories_id = categories.id, categoryitem_id=i.id ) }}"style="text-decoration: none;color:white;"><span class="glyphicon glyphicon-edit"> Edit</a>
+          </button>
+          <button type="button" class="btn btn-danger"><a href="{{ url_for('deletecategoryItem', categories_id = categories.id, categoryitem_id=i.id)}}"style="text-decoration: none;color:white;"><span class="glyphicon glyphicon-trash"> Delete</a></button>
+      
+      {% endif %} 
+    </div>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock content %}
