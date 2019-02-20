@@ -101,4 +101,4 @@ categoryItem1 = CategoryItem(user_id=1, name="Dance Academy: The Movie",
                              OSwRLZab1wU/s-l300.jpg")
 session.add(categoryItem1)
 session.commit()
-print "added category items!"
+print("added category items!")
